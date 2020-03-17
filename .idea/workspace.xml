@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2a2e03c0-dbb3-49b5-9f97-a675bd7d0c48" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YTse3iV1VJ7gW3iUMQn78qbCsR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="flask" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a2e03c0-dbb3-49b5-9f97-a675bd7d0c48" name="Default Changelist" comment="" />
+      <created>1582978010966</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582978010966</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="186" y="27" width="642" height="741" key="#app" timestamp="1584178753429">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="186" y="27" width="642" height="741" key="#app/0.27.1024.741@0.27.1024.741" timestamp="1584178753429" />
+    <state x="0" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584035337398">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="0" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1024.741@0.27.1024.741" timestamp="1584035337398" />
+    <state x="295" y="105" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1584178746077">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="295" y="105" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog/0.27.1024.741@0.27.1024.741" timestamp="1584178746077" />
+    <state x="295" y="155" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584035335909">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="295" y="155" width="424" height="484" key="FileChooserDialogImpl/0.27.1024.741@0.27.1024.741" timestamp="1584035335909" />
+    <state width="1001" height="96" key="GridCell.Tab.0.bottom" timestamp="1584179003717">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state width="1001" height="96" key="GridCell.Tab.0.bottom/0.27.1024.741@0.27.1024.741" timestamp="1584179003717" />
+    <state width="1001" height="96" key="GridCell.Tab.0.center" timestamp="1584179003717">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state width="1001" height="96" key="GridCell.Tab.0.center/0.27.1024.741@0.27.1024.741" timestamp="1584179003717" />
+    <state width="1001" height="96" key="GridCell.Tab.0.left" timestamp="1584179003716">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state width="1001" height="96" key="GridCell.Tab.0.left/0.27.1024.741@0.27.1024.741" timestamp="1584179003716" />
+    <state width="1001" height="96" key="GridCell.Tab.0.right" timestamp="1584179003717">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state width="1001" height="96" key="GridCell.Tab.0.right/0.27.1024.741@0.27.1024.741" timestamp="1584179003717" />
+    <state x="0" y="38" key="SettingsEditor" timestamp="1582978357301">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="0" y="38" key="SettingsEditor/0.27.1024.741@0.27.1024.741" timestamp="1582978357301" />
+    <state x="168" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1582978038394">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="168" y="225" key="com.intellij.ide.util.TipDialog/0.27.1024.741@0.27.1024.741" timestamp="1582978038394" />
+    <state x="175" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1583068423533">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="175" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1024.741@0.27.1024.741" timestamp="1583068423533" />
+  </component>
+</project>
