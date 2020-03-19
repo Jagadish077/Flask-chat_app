@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include '_navbar.html'%}
-<div class="container mb-2">
 <div class="text-center well alert alert-secondary"><b>Welcome to Group Chat <i>{{current_user.username}}</i> </b></div>
+<div class="container mb-2">
+
 <h1>Room members</h1>
 
 {% for room_members in room_members %}
@@ -14,7 +15,10 @@
 <br>
 <div class="message_holder">
     <div class="message_content">
+        {% for message in messages %}
+        <div class="msg_bbl alert alert-secondary"><b style="color: #000">{{message.sender_name}}</b> {{message.message}}<br>{{message.created_at}}</div>
 
+        {% endfor %}
     </div>
     <div class="form-group">
         <input type="text" class="form-control mb-4" id="txt2" placeholder="Type Your Message Here...." autocomplete="off">

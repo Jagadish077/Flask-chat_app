@@ -1,12 +1,13 @@
 from datetime import time, datetime
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 from flask import Flask, render_template, redirect, request, url_for, flash, session
-from flask_socketio import SocketIO, send, join_room, leave_room, Namespace, emit
+from flask_socketio import SocketIO, send, join_room, emit
 from models import User, SQLAlchemy
 from users import User_login
 from models import save_user, get_user, save_rooms, add_room_member, get_room, get_rooms_for_users, \
     is_room_member, get_room_members, is_room_admin_1, updated_room, \
-    update_members_room, get_test_user, remove_rooms, update_session_id, return_only_username, save_messages
+    update_members_room, get_test_user, remove_rooms, update_session_id, save_messages, \
+    get_messages
 
 app = Flask(__name__)
 
@@ -32,11 +33,13 @@ def load_user(id):
     return User.query.get(int(id))
 
 
+# home page
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('base.html')
 
 
+# user login route
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
@@ -64,6 +67,7 @@ def login():
     return render_template('login.html')
 
 
+# registering the user with username and password
 @app.route('/sign_up', methods=['POST', 'GET'])
 def sign_up():
     if request.method == 'POST':
@@ -84,11 +88,13 @@ def sign_up():
     return render_template('user_login.html')
 
 
+# this is the chat page
 @app.route('/chat', methods=['GET', 'POST'])
 def chat():
     return render_template('_chat_app.html', username=session.get("username"))
 
 
+# creating rooms ....he must be logged in
 @app.route('/create_room', methods=['GET', 'POST'])
 @login_required
 def create_room():
@@ -106,7 +112,6 @@ def create_room():
 
 
 # adding the room members with add_room_member and no duplicate member will be allowed to add
-
 @app.route('/add_members', methods=['POST', 'GET'])
 @login_required
 def add_members():
@@ -141,18 +146,23 @@ def get_rooms():
     return render_template('_get_rooms.html')
 
 
-@app.route('/view_room/<room_name>/', methods=['GET', 'POST'])
+# displaying the rooms which he joined
+@app.route('/view_room/<room_name>/', methods=['GET'])
 @login_required
 def view_room(room_name):
     room = get_room(room_name)
     if room and is_room_member(current_user.username, room_name):
+        messages = get_messages(room_name)
         room_members = get_room_members(room_name)
-        return render_template('_view_room.html', room=room, room_members=room_members)
+        return render_template('_view_room.html', room=room, room_members=room_members, messages=messages)
 
     else:
-        return "room not found", 404
+        flash(f"You are not a member of this group {room_name} please go back ", "warning")
+        return render_template('error.html')
+        # return "room not found", 404
 
 
+# updating the room and members
 @app.route('/update_room_names/<room_name>/', methods=['GET', 'POST'])
 @login_required
 def update_room_names(room_name):
@@ -171,7 +181,8 @@ def update_room_names(room_name):
             flash("your are not a admin of this group", "warning")
     return render_template('_edit_room.html', rooms=rooms, member=member)
 
-#deleting a room and room members
+
+# deleting a room and room members
 @app.route('/delete_room', methods=['POST', 'GET'])
 @login_required
 def delete():
@@ -179,14 +190,14 @@ def delete():
         room_name = request.form['room_name']
         if room_name and is_room_admin_1(room_name, current_user.username):
             remove_rooms(room_name)
-            flash("rooms successfully deleted", "success")
+            flash("rooms successfully deleted", "Danger")
             return redirect(url_for('get_rooms'))
         else:
             flash("failed to delete room", "secondary")
     return render_template('delete.html')
 
 
-# this is a private message socket
+# this is a private message page
 @app.route('/private_chat', methods=['GET', 'POST'])
 @login_required
 def private_chat():
@@ -195,6 +206,7 @@ def private_chat():
     return render_template('private.html', user=users, all_names=all_ids)
 
 
+# this is a private message socket
 @socketio.on('private_message')
 def private_lol(msg):
     user_session = msg['username']
@@ -203,6 +215,7 @@ def private_lol(msg):
     emit('new_private', message, room=user_session)
 
 
+# this is a group message socket
 @socketio.on('incoming-msg')
 def on_message(data):
     """Broadcast messages"""
@@ -217,7 +230,7 @@ def on_message(data):
                     now = datetime.now()
                     time_stamp = now.strftime("%H:%M:%S")
                     message = save_messages(current_user.username, room, msg, time_stamp)
-                    if message:    
+                    if message:
                         print("message saved")
                         print(time_stamp)
                         send({"username": current_user.username, "msg": msg, "time": time_stamp}, room=room)
@@ -227,6 +240,7 @@ def on_message(data):
         return "message not sent"
 
 
+# joining the rooms ...invoking joinroom function
 @socketio.on('join')
 def on_join(data):
     """User joins a room"""
@@ -242,6 +256,7 @@ def on_join(data):
         print('message got sent')
 
 
+# private chat socket using session_ids
 @socketio.on('username', namespace='/private')
 def username(username):
     sessionid = get_test_user(username)
@@ -254,19 +269,21 @@ def username(username):
         print("no username found")
 
 
+# sending the message to specific user
 @socketio.on('private', namespace='/private')
 def private(pyaload):
     username = get_test_user(pyaload['username'])
     if username:
         recipient_session = users[username.username]
         message = pyaload['message']
-        send({"message": message, "username": current_user.username}, room=current_user.username)   
+        send({"message": message, "username": current_user.username}, room=current_user.username)
         emit('message', {"message": message, "username": current_user.username}, room=recipient_session)
-       
+
     else:
         return "message not sent"
 
 
+# logout route
 @app.route("/logout")
 @login_required
 def logout():

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a2e03c0-dbb3-49b5-9f97-a675bd7d0c48" name="Default Changelist" comment="" />
+    <list default="true" id="2a2e03c0-dbb3-49b5-9f97-a675bd7d0c48" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_view_room.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_view_room.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +20,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YTse3iV1VJ7gW3iUMQn78qbCsR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,6 +32,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -82,26 +92,30 @@
       <screen x="0" y="27" width="1024" height="741" />
     </state>
     <state x="295" y="155" width="424" height="484" key="FileChooserDialogImpl/0.27.1024.741@0.27.1024.741" timestamp="1584035335909" />
-    <state width="1001" height="96" key="GridCell.Tab.0.bottom" timestamp="1584179003717">
+    <state width="1001" height="96" key="GridCell.Tab.0.bottom" timestamp="1584643038304">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
-    <state width="1001" height="96" key="GridCell.Tab.0.bottom/0.27.1024.741@0.27.1024.741" timestamp="1584179003717" />
-    <state width="1001" height="96" key="GridCell.Tab.0.center" timestamp="1584179003717">
+    <state width="1001" height="96" key="GridCell.Tab.0.bottom/0.27.1024.741@0.27.1024.741" timestamp="1584643038304" />
+    <state width="1001" height="96" key="GridCell.Tab.0.center" timestamp="1584643038304">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
-    <state width="1001" height="96" key="GridCell.Tab.0.center/0.27.1024.741@0.27.1024.741" timestamp="1584179003717" />
-    <state width="1001" height="96" key="GridCell.Tab.0.left" timestamp="1584179003716">
+    <state width="1001" height="96" key="GridCell.Tab.0.center/0.27.1024.741@0.27.1024.741" timestamp="1584643038304" />
+    <state width="1001" height="96" key="GridCell.Tab.0.left" timestamp="1584643038304">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
-    <state width="1001" height="96" key="GridCell.Tab.0.left/0.27.1024.741@0.27.1024.741" timestamp="1584179003716" />
-    <state width="1001" height="96" key="GridCell.Tab.0.right" timestamp="1584179003717">
+    <state width="1001" height="96" key="GridCell.Tab.0.left/0.27.1024.741@0.27.1024.741" timestamp="1584643038304" />
+    <state width="1001" height="96" key="GridCell.Tab.0.right" timestamp="1584643038304">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
-    <state width="1001" height="96" key="GridCell.Tab.0.right/0.27.1024.741@0.27.1024.741" timestamp="1584179003717" />
-    <state x="0" y="38" key="SettingsEditor" timestamp="1582978357301">
+    <state width="1001" height="96" key="GridCell.Tab.0.right/0.27.1024.741@0.27.1024.741" timestamp="1584643038304" />
+    <state x="325" y="70" width="364" height="652" key="RollbackChangesDialog" timestamp="1584639393278">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
-    <state x="0" y="38" key="SettingsEditor/0.27.1024.741@0.27.1024.741" timestamp="1582978357301" />
+    <state x="325" y="70" width="364" height="652" key="RollbackChangesDialog/0.27.1024.741@0.27.1024.741" timestamp="1584639393278" />
+    <state x="0" y="38" key="SettingsEditor" timestamp="1584639163640">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="0" y="38" key="SettingsEditor/0.27.1024.741@0.27.1024.741" timestamp="1584639163640" />
     <state x="168" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1582978038394">
       <screen x="0" y="27" width="1024" height="741" />
     </state>

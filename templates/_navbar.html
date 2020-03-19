@@ -2,7 +2,7 @@
 
 
 {% block header %}
-<nav class="navbar navbar-expand-sm navbar-light bg-secondary">
+<nav class="navbar navbar-expand-sm navbar-light bg-secondary" style="position: sticky;">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -13,6 +13,9 @@
             {% if current_user.username%}
             <li class="nav-item active">
                 <a class="nav-link" href="{{url_for('logout')}}">logout <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('delete')}}">Delete Room</a>
             </li>
             {% else %}
             <li class="nav-item active">

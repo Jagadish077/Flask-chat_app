@@ -39,13 +39,13 @@ class Room_members(UserMixin, db.Model):
     added_at = Column('added_at', String(40), nullable=False)
 
 
-class Storing_messages(db.Model):
+class Storing_messages(UserMixin, db.Model):
     id = Column('id', Integer, primary_key=True, autoincrement=True)
     sender_name = Column('sender_name', String(50), nullable=False)
     room_name = Column('room_name', String(50), nullable=False)
     message = Column('message', String(255), nullable=False)
     created_at = Column('created_at', String(20), nullable=False)
-    
+
 
 # database operations
 def save_user(username, email, password, sessionId):
@@ -112,8 +112,8 @@ def get_rooms_for_users(username):
 
 
 def get_room_members(room_name):
-    room_member = Room_members.query.filter_by(room_name=room_name)
-    return room_member
+    rooms = Room_members.query.filter_by(room_name=room_name)
+    return rooms
 
 
 def is_room_admin_1(room_name, member_name):
@@ -148,7 +148,7 @@ def remove_rooms(room_name):
     deleted_room = Rooms.query.filter_by(room_name=room_name).delete()
     if deleted_room:
         db.session.commit()
-        delete_member_room = Room_members.query.filter_by(room_name=room_name).delete()
+        Room_members.query.filter_by(room_name=room_name).delete()
         db.session.commit()
         Storing_messages.query.filter_by(room_name=room_name).delete()
         db.session.commit()
@@ -158,7 +158,7 @@ def remove_rooms(room_name):
 
 
 def update_session_id(username, sessionid):
-    update =  User.query.filter_by(username=username).update({User.SessionId : sessionid})
+    update = User.query.filter_by(username=username).update({User.SessionId: sessionid})
     if update:
         db.session.commit()
         return update
@@ -171,7 +171,7 @@ def return_only_username():
 
 
 def save_messages(username, room_name, message, created_at):
-    message =  Storing_messages(sender_name=username, room_name=room_name, message=message, created_at=created_at)
+    message = Storing_messages(sender_name=username, room_name=room_name, message=message, created_at=created_at)
     if message:
         db.session.add(message)
         db.session.commit()
@@ -180,5 +180,5 @@ def save_messages(username, room_name, message, created_at):
         return None
 
 
-def get_messages(username, room_name):
-    pass
+def get_messages(room_name):
+    return Storing_messages.query.filter_by(room_name=room_name)
