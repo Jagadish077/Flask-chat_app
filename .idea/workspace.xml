@@ -74,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584644067451</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Flask-chat_app">
+      <created>1584644827553</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584644827553</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -97,10 +104,10 @@
       <screen x="0" y="27" width="1024" height="741" />
     </state>
     <state x="295" y="105" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog/0.27.1024.741@0.27.1024.741" timestamp="1584178746077" />
-    <state x="116" y="27" width="782" height="741" key="CommitChangelistDialog2" timestamp="1584644067048">
+    <state x="155" y="27" width="782" height="741" key="CommitChangelistDialog2" timestamp="1584644827263">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
-    <state x="116" y="27" width="782" height="741" key="CommitChangelistDialog2/0.27.1024.741@0.27.1024.741" timestamp="1584644067048" />
+    <state x="155" y="27" width="782" height="741" key="CommitChangelistDialog2/0.27.1024.741@0.27.1024.741" timestamp="1584644827263" />
     <state x="295" y="155" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584035335909">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
