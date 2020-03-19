@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a2e03c0-dbb3-49b5-9f97-a675bd7d0c48" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_view_room.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_view_room.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +18,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1YTse3iV1VJ7gW3iUMQn78qbCsR" />
   <component name="ProjectViewState">
@@ -70,10 +67,22 @@
       <option name="presentableId" value="Default" />
       <updated>1582978010966</updated>
     </task>
+    <task id="LOCAL-00001" summary="Flask-chat_app">
+      <created>1584644067451</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1584644067451</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Flask-chat_app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flask-chat_app" />
   </component>
   <component name="WindowStateProjectService">
     <state x="186" y="27" width="642" height="741" key="#app" timestamp="1584178753429">
@@ -88,6 +97,10 @@
       <screen x="0" y="27" width="1024" height="741" />
     </state>
     <state x="295" y="105" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog/0.27.1024.741@0.27.1024.741" timestamp="1584178746077" />
+    <state x="116" y="27" width="782" height="741" key="CommitChangelistDialog2" timestamp="1584644067048">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="116" y="27" width="782" height="741" key="CommitChangelistDialog2/0.27.1024.741@0.27.1024.741" timestamp="1584644067048" />
     <state x="295" y="155" width="424" height="484" key="FileChooserDialogImpl" timestamp="1584035335909">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
@@ -120,6 +133,10 @@
       <screen x="0" y="27" width="1024" height="741" />
     </state>
     <state x="168" y="225" key="com.intellij.ide.util.TipDialog/0.27.1024.741@0.27.1024.741" timestamp="1582978038394" />
+    <state x="280" y="316" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584644760925">
+      <screen x="0" y="27" width="1024" height="741" />
+    </state>
+    <state x="280" y="316" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1024.741@0.27.1024.741" timestamp="1584644760925" />
     <state x="175" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1583068423533">
       <screen x="0" y="27" width="1024" height="741" />
     </state>
