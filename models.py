@@ -15,14 +15,24 @@ class User(UserMixin, db.Model):
     email = Column('email', String(60), nullable=False, unique=True)
     password = Column('password', String(100), nullable=False)
     SessionId = Column('SessionId', String(50), unique=True, default="asdsadadasd1232eqwdsadsa")
+    friends = db.relationship('Friends', backref='friends')
 
 
+# User friends 
+class Friends(UserMixin, db.Model):
+    id = Column('id', Integer, primary_key=True, autoincrement=True)
+    friend_name = Column('friend_name', String(50), nullable=True)
+    added_by = Column('added_by', String(50), nullable=False)
+    User_email = Column('user_email', String(50), db.ForeignKey('user.email'))
+
+# Dummy message document
 class messages(db.Model):
     id = Column('id', Integer, primary_key=True)
     username = Column('username', String(50), nullable=False)
     SessionId = Column('SessionId', String(50), unique=True, default="asdsadadasd1232eqwdsadsa")
 
 
+# Creating rooms 
 class Rooms(UserMixin, db.Model):
     room_id = Column('room_id', Integer, primary_key=True, autoincrement=True)
     room_name = Column('room_name', String(50), nullable=False, unique=False)
@@ -30,6 +40,7 @@ class Rooms(UserMixin, db.Model):
     created_at = Column('created_at', String(40), nullable=False)
 
 
+# room_members with room_name of the user
 class Room_members(UserMixin, db.Model):
     member_id = Column('member_id', Integer, primary_key=True, autoincrement=True)
     member_name = Column('member_name', String(50), nullable=False, unique=False)
@@ -39,6 +50,8 @@ class Room_members(UserMixin, db.Model):
     added_at = Column('added_at', String(40), nullable=False)
 
 
+
+#
 class Storing_messages(UserMixin, db.Model):
     id = Column('id', Integer, primary_key=True, autoincrement=True)
     sender_name = Column('sender_name', String(50), nullable=False)
@@ -46,6 +59,13 @@ class Storing_messages(UserMixin, db.Model):
     message = Column('message', String(255), nullable=False)
     created_at = Column('created_at', String(20), nullable=False)
 
+
+class Private_message(db.Model):
+    id = Column('id', Integer, primary_key=True, autoincrement=True)
+    sender_name = Column('sender_name', String(50), nullable=False)
+    message = Column('message', String(255), nullable=False)
+    friend_to = Column('friend_to', String(50))
+    created_at = Column('created_at', String(20), nullable=False)
 
 # database operations
 def save_user(username, email, password, sessionId):
@@ -59,6 +79,9 @@ def save_user(username, email, password, sessionId):
 def get_test_user(username):
     return User.query.filter_by(username=username).first()
 
+
+def get_test_email(email):
+    return User.query.filter_by(email=email).first()
 
 def get_user(username):
     user_data = User.query.filter_by(username=username).first()
@@ -157,8 +180,8 @@ def remove_rooms(room_name):
         return None
 
 
-def update_session_id(username, sessionid):
-    update = User.query.filter_by(username=username).update({User.SessionId: sessionid})
+def update_session_id(email, sessionid):
+    update = User.query.filter_by(email=email).update({User.SessionId: sessionid})
     if update:
         db.session.commit()
         return update
@@ -182,3 +205,46 @@ def save_messages(username, room_name, message, created_at):
 
 def get_messages(room_name):
     return Storing_messages.query.filter_by(room_name=room_name)
+
+
+def save_private_message(message, sender_name, reciever_name,  created_at):
+    message =  Private_message(message=message, sender_name=sender_name, friend_to=reciever_name, created_at=created_at)
+    if message:
+        db.session.add(message)
+        db.session.commit()
+        return message
+    else:
+        return None
+
+
+
+def add_friends(friend_name, current_username, current_email):
+    friends = Friends(friend_name=friend_name, added_by=current_username, User_email=current_email)
+    if friends:
+        db.session.add(friends)
+        db.session.commit()
+        return friends
+    else:
+        return None
+
+
+def get_friends_list(current_username):
+    friends_list =  Friends.query.filter_by(added_by=current_username).all()
+    if friends_list:
+        return friends_list
+    else:
+        return None
+
+
+def get_authorized_messages(friend_name, current_username):
+    return Friends.query.filter_by(friend_name=friend_name, added_by=current_username).all()
+    
+
+
+
+def get_private_messages(sender_name, friend_to):
+    message = Private_message.query.filter_by(sender_name=sender_name, friend_to=friend_to).all()
+    if message:
+        return message
+    else:
+        return None

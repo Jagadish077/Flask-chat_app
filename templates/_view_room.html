@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include '_navbar.html'%}
-<div class="text-center well alert alert-secondary"><b>Welcome to Group Chat <i>{{current_user.username}}</i> </b></div>
+<div class="text-center well alert alert-secondary"><b>Welcome to {{room.room_name}} Group <i>{{current_user.username}}</i> </b></div>
 <div class="container mb-2">
 
 <h1>Room members</h1>

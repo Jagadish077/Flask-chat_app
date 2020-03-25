@@ -7,7 +7,8 @@ from users import User_login
 from models import save_user, get_user, save_rooms, add_room_member, get_room, get_rooms_for_users, \
     is_room_member, get_room_members, is_room_admin_1, updated_room, \
     update_members_room, get_test_user, remove_rooms, update_session_id, save_messages, \
-    get_messages
+    get_messages, save_private_message, get_private_messages, add_friends, get_friends_list, \
+        get_test_email, get_authorized_messages
 
 app = Flask(__name__)
 
@@ -119,15 +120,19 @@ def add_members():
         room_name = request.form['room_name']
         usernames1 = request.form['usernames']
         if get_room(room_name) and is_room_admin_1(room_name, current_user.username):
-            if is_room_member(usernames1, room_name) is None:
-                if usernames1 == current_user.username:
-                    add_room_member(room_name, usernames1, current_user.username, is_room_admin=True)
-                    return redirect(url_for('get_rooms'))
+            if get_test_user(usernames1):
+                    
+                if is_room_member(usernames1, room_name) is None:
+                    if usernames1 == current_user.username:
+                        add_room_member(room_name, usernames1, current_user.username, is_room_admin=True)
+                        return redirect(url_for('get_rooms'))
+                    else:
+                        add_room_member(room_name, usernames1, current_user.username, is_room_admin=False)
+                        return redirect(url_for('get_rooms'))
                 else:
-                    add_room_member(room_name, usernames1, current_user.username, is_room_admin=False)
-                    return redirect(url_for('get_rooms'))
+                    flash(f"{usernames1} already in a room", "warning")
             else:
-                flash(f"{usernames1} already in a room", "warning")
+                flash(f"{usernames1} is not a registered member..Register first", "danger")
         else:
             flash("failed to add members", "danger")
     return render_template('add_room_member.html')
@@ -197,13 +202,48 @@ def delete():
     return render_template('delete.html')
 
 
+# adding friends for the private chat and friend must be registered before adding the friend
+@app.route('/friends', methods=['GET', 'POST'])
+@login_required
+def friends():
+    if request.method == 'POST':
+        friends_name = request.form['user_email']
+        if friends_name is not None and get_test_email(friends_name):
+            user_email = get_test_user(current_user.username)
+            friends = add_friends(friends_name,current_user.username, user_email.email)
+            if friends:
+                flash(f"successfully added {friends_name} to friend list", "success")
+                return redirect(url_for("private_chat"))
+            else:
+                flash(f"failed to add friend {friends_name} to friend list", "warning")
+        else:
+            flash(f"This {friends_name} is not a valid name", "danger")
+
+    return render_template("_add_friends.html")
+
+
+
 # this is a private message page
 @app.route('/private_chat', methods=['GET', 'POST'])
 @login_required
 def private_chat():
-    all_ids = User.query.all()
+    email = get_test_user(current_user.username)
+    all_ids = get_friends_list(current_user.username)
+    print(all_ids)
+    if all_ids:   
+        return render_template('private.html', user=users, all_names=all_ids)
+    else:
+        flash("your friends list is emprty ", "warning")
+        return render_template('private.html')
 
-    return render_template('private.html', user=users, all_names=all_ids)
+@app.route('/chat_private/<name>/', methods=['GET', 'POST'])
+@login_required
+def chat_private(name):
+    if get_authorized_messages(name, current_user.username):
+        messages = get_private_messages(current_user.username, name)
+        return render_template('_chat_private.html', name=name, messages=messages)
+    else:
+        flash("something wend Wrong please go back to login page", "danger")
 
 
 # this is a private message socket
@@ -259,10 +299,10 @@ def on_join(data):
 # private chat socket using session_ids
 @socketio.on('username', namespace='/private')
 def username(username):
-    sessionid = get_test_user(username)
+    sessionid = get_test_email(username)
     if sessionid:
-        update_session_id(sessionid.username, request.sid)
-        users[sessionid.username] = sessionid.SessionId
+        update_session_id(sessionid.email, request.sid)
+        users[sessionid.email] = sessionid.SessionId
         print('username added')
         print(users)
     else:
@@ -272,13 +312,16 @@ def username(username):
 # sending the message to specific user
 @socketio.on('private', namespace='/private')
 def private(pyaload):
-    username = get_test_user(pyaload['username'])
+    username = get_test_email(pyaload['email'])
     if username:
-        recipient_session = users[username.username]
+        users1 = list()
+        recipient_session = users[pyaload['email']]
+        print("user removed")   
         message = pyaload['message']
-        send({"message": message, "username": current_user.username}, room=current_user.username)
-        emit('message', {"message": message, "username": current_user.username}, room=recipient_session)
-
+        now = datetime.now()
+        time_stamp = now.strftime("%H:%M:%S")
+        save_private_message(message, current_user.email, pyaload['email'], time_stamp)
+        emit('message', {"message": message, "username": current_user.email}, room=recipient_session)
     else:
         return "message not sent"
 
