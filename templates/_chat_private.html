@@ -16,11 +16,14 @@
           <div class="no_message">
             <h1 style='color: #ccc'></h1>
             <div class="message_holder">
+              {%if messages%}
                {% for message in messages %}
                <div class="msg_bbl alert alert-secondary">
                  <b style="color: #000">{{message.friend_to}}</b> {{message.message}}</div>
                   
                {% endfor %}
+               {%else%}
+               {%endif%}
             </div>
             <form action="" method="POST">
               <b>Type your message below <span class="glyphicon glyphicon-arrow-down"></span></b>

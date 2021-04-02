@@ -3,7 +3,7 @@ from models import *
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite://///home/jagadish/Desktop/Databases/chat_app.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite://///home/jagadish/Documents/Python/chat_app.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

@@ -13,11 +13,11 @@ from models import save_user, get_user, save_rooms, add_room_member, get_room, g
 app = Flask(__name__)
 
 # database configuration
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite://///home/jagadish/Desktop/Databases/chat_app.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite://///home/jagadish/Documents/Python/chat_app.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = "kill you"
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 # login configuration
 loginmanager = LoginManager(app)
@@ -241,6 +241,7 @@ def private_chat():
 def chat_private(name):
     if get_authorized_messages(name, current_user.username):
         messages = get_private_messages(current_user.username, name)
+        print(messages, name)
         return render_template('_chat_private.html', name=name, messages=messages)
     else:
         flash("something wend Wrong please go back to login page", "danger")

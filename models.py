@@ -67,6 +67,14 @@ class Private_message(db.Model):
     friend_to = Column('friend_to', String(50))
     created_at = Column('created_at', String(20), nullable=False)
 
+def main():
+    User()
+    Friends()
+    messages()
+    Rooms()
+    Room_members()
+    Storing_messages()
+    Private_message()
 # database operations
 def save_user(username, email, password, sessionId):
     password_hash = generate_password_hash(password, method='sha256')
@@ -248,3 +256,7 @@ def get_private_messages(sender_name, friend_to):
         return message
     else:
         return None
+
+
+if __name__ == '__main__':
+    main()
